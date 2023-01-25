@@ -1,0 +1,178 @@
+// vars syntax $varName: value || use: property: $varName; 
+// Declaring scss variables here: 
+
+$dark-blue: #1B1464;
+$light-blue: #0AC7DD;
+
+// @mixin name {rules} || use: selector {@include name;} 
+// Declaring mixins here: 
+// maybe not needed so much
+@mixin main-title {
+	font-size: 2rem;
+	font-weight: bold;
+	line-height: 150%;
+}
+
+@mixin flex-between-center {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@mixin flex-align-center {
+	display: flex;
+	align-items: center;
+}
+
+@mixin flex-centering {
+	@include flex-align-center;
+	justify-content: center;
+}
+
+* {
+  margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Roboto", sans-serif;
+
+	ul {
+		list-style: none;
+	}
+
+	a {
+		text-decoration: none;
+	}
+}
+
+.container {
+	width: 85%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.hero-wrapper {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+}
+
+.header {
+	width: 100vw;
+	margin: 0 auto;
+	background-color: #ffffff;
+
+	.header-wrapper {
+		@include flex-between-center;
+
+		.logo-wrapper {
+			max-width: 70px;
+	
+			.logo-wrapper__logo {
+				max-width: 100%;
+			}
+		}
+	
+		.navbar {
+			.navbar__list {
+				@include flex-align-center;
+	
+				.list__item {
+					font-size: 1rem;
+	
+					&:not(:last-child) {
+						margin-right: 1em;
+					}
+					
+					.item__link {
+						color: #0AC7DD;
+						transition: .5s ease-in-out;
+	
+						&:hover {
+							color: #1B1464;
+						}
+					}
+	
+					.item__link--darkblue {
+						color: #1B1464;
+	
+						&:hover {
+							color: #0AC7DD;
+						}
+					}
+				}
+	
+			}
+		}
+	
+		.call-cta {
+			@include flex-align-center;
+			cursor: pointer;
+
+			.call-cta__icon {
+				width: 50px;
+				margin-right: .2em;
+			}
+		}
+	}
+}
+
+.hero__overlay {
+	background-image: url("./assets/white-painted-wall-texture-background.jpg");	
+	// background-color: #fff; COMMENT OUT FOR DEMO
+	z-index: -1;
+	opacity: .8;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+
+}
+
+video {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	z-index: -2;
+	object-fit: contain;
+}
+
+// ANIMATIONS NOTE: MAKE ALL THE ELEMENTS UPPER OVERLAY APPEAR USING OPACITY
+.hero {
+	padding: 15% 0;
+	text-align: center;
+	font-size: 1.8rem;
+	
+	.hero__title {
+		color: #0AC7DD;
+	}
+
+	.hero__subtitle {
+		color: #1B1464;
+		font-size: 1.4rem;
+		font-weight: 400;
+		margin: 2.3em;
+	}
+
+	.hero__btns-wrapper {
+		@include flex-centering;
+		font-size: 1rem;
+
+		.btns-wrapper__btn:not(:last-child) {
+			margin-right: 6em;
+		}
+
+		.btns-wrapper__btn {
+			color: #0AC7DD;
+			background-color: #1B1464;
+			width: 8.75em;
+			padding: .75em 0;
+			border-radius: 20px;
+
+			&:hover {
+				opacity: .8;
+				transition: all .5s ease-in-out;
+			}
+		}
+	}
+	
+}
